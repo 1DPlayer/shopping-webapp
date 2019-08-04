@@ -24,15 +24,23 @@ html {
 	background: #111111;
 }
 body {
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+	overflow-x: hidden;
+}
+body::-webkit-scrollbar { width: 0 !important }
+body {
     font-family: CircularBook;
     color: #bdbdbd;
     background: #212121;
     counter-reset: Serial;
-    width: 600px;
+    max-width: 600px;
+    min-width: 415px;
     margin: auto;
     padding-top: 1px;
+    padding-bottom: 60px;
 }
-#table {padding-bottom: 60px;max-width: 550px;margin: auto;background: #212121;}
+#table {max-width: 550px;margin: auto;background: #212121;padding: 0 20px;}
 #table-area {
 }
 .pics {
@@ -75,12 +83,13 @@ body {
 	margin-bottom: 8px;
 }
 .tracking-number {
-	font-family: monospace;
 	font-size: 15px;
 	position: relative;
 	border-radius: 7px;
 	line-height: 11px;
-    font-family: CircularBlack;
+	font-family: monospace;
+	font-weight: 600;
+	letter-spacing: 2px;
 }
 .tr {
     height: 110px;
@@ -90,6 +99,7 @@ body {
     width: 100%;
     border-radius: 10px;
     background: #313131;
+    z-index: 2;
     box-shadow: -2px 1px 3px 0px rgba(0, 0, 0, 0.16);
 }
 .pic {
@@ -253,8 +263,9 @@ header {
     left: 0;
     right: 0;
     height: 60px;
-    z-index: 1;
+    z-index: 3;
     border-top: #212121;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.29);
 }
 header input {
     position: absolute;
@@ -350,7 +361,6 @@ input:focus {
     position: absolute;
     width: 100%;
     top: 106px;
-    z-index: -1;
 }
 .on {
     background: #515151;
