@@ -1,3 +1,10 @@
+   var Minimize = function() {
+     external.appMinimize();
+   };
+   function closeApp() { 
+  window.close(); 
+}
+
 $(".ab").countdown("2019/08/05", function(event) {$(this).text(event.strftime('%D'));});
 $(".ac").countdown("2019/08/06", function(event) {$(this).text(event.strftime('%D'));});
 $(".bf, .au").countdown("2019/08/17", function(event) {$(this).text(event.strftime('%D'));});
@@ -22,7 +29,9 @@ $(".bd, .be").countdown("2019/10/09", function(event) {$(this).text(event.strfti
 $(".at").countdown("2019/10/19", function(event) {$(this).text(event.strftime('%D'));});
 $(".an, .aq").countdown("2019/10/27", function(event) {$(this).text(event.strftime('%D'));});
 $(".ao").countdown("2019/10/30", function(event) {$(this).text(event.strftime('%D'));});
-$(".ae").countdown("", function(event) {$(this).text(event.strftime('%D'));});
+$(".ae").countdown("2019/08/05", function(event) {$(this).text(event.strftime('%D'));});
+$(".bl").countdown("2019/10/02", function(event) {$(this).text(event.strftime('%D'));});
+$(".bm").countdown("2019/10/18", function(event) {$(this).text(event.strftime('%D'));});
  
 
 function sortTable(table, order) {
@@ -92,17 +101,22 @@ function alternaEstado(botao){
 }
 
 $( document ).ready(function() {
+	//obter o array de classes pelo localStorage
 	let classesBotoes = JSON.parse(localStorage.getItem("botoes"));
-	if (classesBotoes === null){
+	if (classesBotoes === null){ //se nao houver constroi o array com base nas classes do html
 		classesBotoes = [];
 		$(".status").each(function(posicao){
 			classesBotoes[posicao] = $(this).hasClass('waiting') ? 'waiting' : 'received';
 		});
 	}
+
+	//aplica o array de classes nos botões que estão na página
 	$(".status").each(function(posicao){
 		let classe = classesBotoes[posicao];
 		$(this).removeClass('received waiting').addClass(classe).text(classe);
 	});
+
+	//no click de cada botão, altera a classe no array e guarda o array todo de novo em localStorage
 	$('.status').click(function(){
 		alternaEstado($(this));
 		let posicaoClicada = $(".status").index($(this)); 
